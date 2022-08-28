@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const useForm = (callback, defaultValues={}) => {
+const useForm = (callback, defaultValues = {}) => {
 
   const [values, setValues] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
     callback(values);
+    event.target.reset();
   };
 
   const handleChange = (event) => {
@@ -20,8 +21,8 @@ const useForm = (callback, defaultValues={}) => {
     setValues(values => ({ ...values, [name]: value }));
   };
 
-  useEffect( () => {
-    setValues( defaultValues );
+  useEffect(() => {
+    setValues(defaultValues);
   }, [defaultValues]);
 
   return {
