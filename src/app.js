@@ -1,15 +1,19 @@
-import React from 'react';
-import Header from './components/header.js';
+import React, { Component } from 'react'
 
-import ToDo from './components/todo/todo.js';
+import ToDo from './components/todo/todo';
+import Navbar from './components/navbar/navbar';
+import SettingsContextProvider from './context/Settings';
 
-export default class App extends React.Component {
+
+export default class App extends Component {
   render() {
     return (
-      <>
-      <Header/>
-      <ToDo />
-      </>
-    );
+      <div>
+        <SettingsContextProvider>
+          <Navbar />
+          <ToDo />
+        </SettingsContextProvider>
+      </div>
+    )
   }
 }
